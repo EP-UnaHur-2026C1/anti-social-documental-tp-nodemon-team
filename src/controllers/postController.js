@@ -34,7 +34,7 @@ const createPost = async (req, res) => {
         if(!newPost){
             return res.status(400).json({message: "No se pudo crear el post"})
         }
-        res.status(201).json({message: "Post creado con éxito"})
+        res.status(201).json(newPost)
     }
     catch(error){
         res.status(500).json(error.message)

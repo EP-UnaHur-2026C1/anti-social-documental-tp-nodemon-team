@@ -1,5 +1,6 @@
 const {Router} = require('express')
 const router = Router()
+const validarPostById = require("../middlewares/post.middleware")
 
 const {
     getPost,
@@ -9,16 +10,17 @@ const {
     deletePost
 } = require('../controllers/postController')
 const { createComment,getCommentsByPost } = require('../controllers/commentController')
+const validarCommentById = require('../middlewares/comment.middleware')
 
 router.get('/', getPost)
-router.get('/:id', getPostById)
-router.get("/:id",getCommentsByPost)
+router.get('/:id', validarPostById, getPostById)
+router.get("/:id", validarPostById, getCommentsByPost)
 
 router.post('/', createPost)
-router.post("/:id/comments", createComment)
+router.post("/:id/comments",validarCommentById, createComment)
 
-router.put('/:id', updatePost)
+router.put('/:id', validarPostById, updatePost)
 
-router.delete('/:id', deletePost)
+router.delete('/:id', validarPostById, deletePost)
 
 module.exports = router;
