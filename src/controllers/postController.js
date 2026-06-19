@@ -9,7 +9,7 @@ const getPost = async (req, res) => {
         res.status(200).json(posts)
     }
     catch(error){
-        res.status(500).json(e.message)
+        res.status(500).json(error.message)
     }
 }
 
@@ -23,7 +23,7 @@ const getPostById = async (req, res) => {
         res.status(200).json(post)
     }
     catch(error){
-        res.status(500),json(e.message)
+        res.status(500),json(error.message)
     }
 }
 
@@ -37,7 +37,7 @@ const createPost = async (req, res) => {
         res.status(201).json({message: "Post creado con éxito"})
     }
     catch(error){
-        res.status(500).json(e.message)
+        res.status(500).json(error.message)
     }
 }
 
@@ -51,7 +51,7 @@ const updatePost = async (req, res) =>{
         res.status(200).json({message: "Post actualizado"})
     }
     catch(error){
-        res.status(500).json(e.message)
+        res.status(500).json(error.message)
     }
 }
 
@@ -65,7 +65,7 @@ const deletePost = async (req, res) =>{
         res.status(200).json({message: "Post eliminado"})
     }
     catch(error){
-        res.status(500).json(e.message)
+        res.status(500).json(error.message)
     }
 }
 
