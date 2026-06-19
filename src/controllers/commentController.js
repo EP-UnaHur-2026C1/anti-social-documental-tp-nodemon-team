@@ -1,10 +1,12 @@
 const Comment = require("../models/commentSchema")
+const Post = require("../models/postSchema")
 
 const getAllComments = async(req,res)=>{
     try{
         const comments = await Comment.find().populate("user","nickname")
         res.status(200).json(comments)
     } catch(e){
+        console.error(e)
         res.status(500).json({message: "Error al encontrar los comentarios"})
     }
 }
@@ -17,7 +19,28 @@ const getCommentById = async(req,res)=>{
         }
         res.status(200).json(comment)
     } catch(e){
+        console.error(e)
         res.status(500).json({message: "Error al buscar comentario"})
+    }
+}
+const getCommentsByPost = async(req,res)=>{
+    try{
+        const postId = req.params
+        const post =  await Post.findById(postId)
+        if(!post){
+            res.status(404).json({message: "Post no encontrado"})
+        }
+        const limiteMeses = Number(process.env.COMMENT_MES_LIMITE) || 6;
+        const fechaLimite = new Date();
+        fechaLimite.setMonth(fechaLimite.getMonth() - limiteMeses);
+        const comments = await Comment.find({
+            post: postId,
+            createdAt: { $gte: fechaLimite },
+        }).populate("user", "nickName")
+        res.status(200).json(comments)
+    } catch(e){
+        console.error(e)
+        res.status(500).json({message: "Error al encontrar comentarios"})
     }
 }
 const createComment = async(req, res) =>{
@@ -25,6 +48,7 @@ const createComment = async(req, res) =>{
         const comment = await Comment.create(req.body)
         res.status(201).json(comment)
     } catch(e){
+        console.error(e)
         res.status(500).json({message: "Error al crear comentario"})
     }
     
@@ -41,6 +65,7 @@ const updateComment = async(req,res)=>{
          }
          res.status(200).json(comment)
     } catch(e){
+        console.error(e)
         res.status(500).json({message: "Error al actualizar comentario"})
     }
 }
@@ -52,7 +77,8 @@ const deleteComment = async(req,res)=>{
         }
         res.status(200).json({message:"Comentario eliminado correctamente"})
     } catch(e){
+        console.error(e)
         res.status(500).json({message:"Error al eliminar comentario"})
     }
 }
-module.exports = {getAllComments,getCommentById,createComment,updateComment,deleteComment}
+module.exports = {getAllComments,getCommentById,createComment,updateComment,deleteComment,getCommentsByPost}

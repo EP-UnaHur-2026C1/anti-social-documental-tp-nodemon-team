@@ -8,11 +8,14 @@ const {
     updatePost,
     deletePost
 } = require('../controllers/postController')
+const { createComment,getCommentsByPost } = require('../controllers/commentController')
 
 router.get('/', getPost)
 router.get('/:id', getPostById)
+router.get("/:id",getCommentsByPost)
 
 router.post('/', createPost)
+router.post("/:id/comments", createComment)
 
 router.put('/:id', updatePost)
 
