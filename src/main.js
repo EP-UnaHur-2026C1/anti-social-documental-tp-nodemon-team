@@ -1,18 +1,21 @@
 const express = require('express')
 const connectToDatabase = require('./config/db')
+const PORT = process.env.PORT || 3000
 const postRoutes = require('./routes/postRoutes')
 const commentRoutes = require("./routes/commentRoutes")
+const userRoutes = require("./routes/userRoutes")
 
 const app = express()
 
 app.use(express.json());
 app.use('/post', postRoutes);
 app.use("/comment",commentRoutes)
+app.use("/user", userRoutes)
 
 async function startServer() {
   await connectToDatabase(); 
-  app.listen(3000, () => {
-    console.log("App iniciada");
+  app.listen(PORT, () => {
+    console.log(`App iniciada en el puerto ${PORT}`);
   });
 }
 

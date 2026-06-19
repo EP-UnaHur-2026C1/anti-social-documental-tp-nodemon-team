@@ -7,7 +7,7 @@ const getAllComments = async(req,res)=>{
         res.status(200).json(comments)
     } catch(e){
         console.error(e)
-        res.status(500).json({message: "Error al encontrar los comentarios"})
+        res.status(500).json(e.message)
     }
 }
 const getCommentById = async(req,res)=>{
@@ -20,7 +20,7 @@ const getCommentById = async(req,res)=>{
         res.status(200).json(comment)
     } catch(e){
         console.error(e)
-        res.status(500).json({message: "Error al buscar comentario"})
+        res.status(500).json(e.message)
     }
 }
 const getCommentsByPost = async(req,res)=>{
@@ -40,7 +40,7 @@ const getCommentsByPost = async(req,res)=>{
         res.status(200).json(comments)
     } catch(e){
         console.error(e)
-        res.status(500).json({message: "Error al encontrar comentarios"})
+        res.status(500).json(e.message)
     }
 }
 const createComment = async(req, res) =>{
@@ -49,7 +49,7 @@ const createComment = async(req, res) =>{
         res.status(201).json(comment)
     } catch(e){
         console.error(e)
-        res.status(500).json({message: "Error al crear comentario"})
+        res.status(500).json(e.message)
     }
     
 }
@@ -66,7 +66,7 @@ const updateComment = async(req,res)=>{
          res.status(200).json(comment)
     } catch(e){
         console.error(e)
-        res.status(500).json({message: "Error al actualizar comentario"})
+        res.status(500).json(e.message)
     }
 }
 const deleteComment = async(req,res)=>{
@@ -78,7 +78,7 @@ const deleteComment = async(req,res)=>{
         res.status(200).json({message:"Comentario eliminado correctamente"})
     } catch(e){
         console.error(e)
-        res.status(500).json({message:"Error al eliminar comentario"})
+        res.status(500).json(e.message)
     }
 }
 module.exports = {getAllComments,getCommentById,createComment,updateComment,deleteComment,getCommentsByPost}

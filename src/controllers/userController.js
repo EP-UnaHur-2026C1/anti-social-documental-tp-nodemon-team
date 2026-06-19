@@ -9,7 +9,7 @@ const getUsers = async (req, res) =>{
         res.status(200).json(users)
     }
     catch(error){
-        res.status(500).json(e.message)
+        res.status(500).json(error.message)
     }
 }
 
@@ -23,7 +23,7 @@ const getUserById = async (req, res) =>{
         res.status(200).json(user)
     }
     catch(error){
-        res.status(500).json(e.message)
+        res.status(500).json(error.message)
     }
 }
 
@@ -33,10 +33,10 @@ const createUser = async (req, res) =>{
         if(!user){
             return res.status(400).json({message: "error al crear usuario"})
         }
-        res.status(201).json({message: "Usuario creado"})
+        res.status(201).json(user)
     }
     catch(error){
-        res.status(500).json(e.error)
+        res.status(500).json(error.message)
     }
 }
 
@@ -50,7 +50,7 @@ const updateUser = async (req, res) =>{
         res.status(200).json({message: "Usuario actualizado"})
     }
     catch(error){
-        res.status(500).json(e.message)
+        res.status(500).json(error.message)
     }
 }
 
@@ -64,7 +64,7 @@ const deleteUser = async (req, res) =>{
         res.status(200).json({message: "Usuario eliminado"})
     }
     catch(error){
-        res.status(500).json(e.message)
+        res.status(500).json(error.message)
     }
 }
 
