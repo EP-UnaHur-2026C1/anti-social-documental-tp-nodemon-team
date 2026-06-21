@@ -7,11 +7,12 @@ const {
     updateUser,
     deleteUser
 } = require('../controllers/userController')
+const validarUserById = require("../middlewares/user.middleware")
 
 router.get('/', getUsers)
-router.get('/:id', getUserById)
+router.get('/:id', validarUserById, getUserById)
 router.post('/', createUser)
-router.put('/:id', updateUser)
-router.delete('/:id', deleteUser)
+router.put('/:id', validarUserById, updateUser)
+router.delete('/:id', validarUserById, deleteUser)
 
 module.exports = router

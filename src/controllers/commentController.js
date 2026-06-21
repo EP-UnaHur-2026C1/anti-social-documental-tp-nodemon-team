@@ -14,9 +14,6 @@ const getCommentById = async(req,res)=>{
     try{
         const id = req.params.id
         const comment = Comment.findById(id).populate("user","nickname")
-        if(!comment){
-            res.status(404).json({message: "Comentario no encontrado"})
-        }
         res.status(200).json(comment)
     } catch(e){
         console.error(e)
@@ -27,9 +24,6 @@ const getCommentsByPost = async(req,res)=>{
     try{
         const postId = req.params
         const post =  await Post.findById(postId)
-        if(!post){
-            res.status(404).json({message: "Post no encontrado"})
-        }
         const limiteMeses = Number(process.env.COMMENT_MES_LIMITE) || 6;
         const fechaLimite = new Date();
         fechaLimite.setMonth(fechaLimite.getMonth() - limiteMeses);
@@ -60,9 +54,6 @@ const updateComment = async(req,res)=>{
             req.body,
             {new: true}
          )
-         if(!comment){
-            res.status(404).json({message: "Comentario no encontrado"})
-         }
          res.status(200).json(comment)
     } catch(e){
         console.error(e)
@@ -72,9 +63,6 @@ const updateComment = async(req,res)=>{
 const deleteComment = async(req,res)=>{
     try{
         const comment = await Comment.findByIdAndDelete(req.params.id)
-        if(!comment){
-            res.status(404).json({message:"Comentario no encontrado"})
-        }
         res.status(200).json({message:"Comentario eliminado correctamente"})
     } catch(e){
         console.error(e)
