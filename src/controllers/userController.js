@@ -21,6 +21,16 @@ const getUserById = async (req, res) =>{
     }
 }
 
+
+const getUserByNickname = async(req,res)=>{
+    try{
+        const nickname = req.params.nickname
+        const user = await User.findOne({nickname: nickname})
+        res.status(200).json(user)
+    } catch(e){
+        res.status(500).json(error.message)
+    }
+}
 const createUser = async (req, res) =>{
     try{
         const user = await User.create(req.body)
@@ -53,4 +63,4 @@ const deleteUser = async (req, res) =>{
     }
 }
 
-module.exports = {getUsers, getUserById, createUser, updateUser, deleteUser}
+module.exports = {getUsers, getUserById, createUser, updateUser, deleteUser, getUserByNickname}
