@@ -1,6 +1,8 @@
 const Post = require('../models/postSchema');
 const PostImage = require("../models/postImageSchema")
 const Comment = require("../models/commentSchema")
+const Tag = require("../models/tagSchema")
+const User = require("../models/userSchema")
 
 const calcularLimiteVisibilidad = () => {
   const limiteMeses = Number(process.env.COMMENT_VISIBILITY_MONTHS) || 6;
@@ -12,7 +14,7 @@ const resolverTagIds = async (tags = []) => {
   return Promise.all(
     tags.map(async (tagName) => {
       const tag = await Tag.findOneAndUpdate(
-        { name: tagName },
+        { nombre: tagName },
         { $setOnInsert: { name: tagName } },
         { upsert: true, new: true }
       );
@@ -49,9 +51,10 @@ const getPostById = async (req, res) => {
 
 const createPost = async (req, res) => {
     try{
-        const {user,contenido,tags=[]} = req.body
+        const {nickname,contenido,tags=[]} = req.body
+        const user = await User.findOne({nickname})
         const tagIds = await resolverTagIds(tags)
-        const newPost = await Post.create({user,contenido,tags: tagIds})
+        const newPost = await Post.create({user: user._id,contenido,tags: tagIds})
         const post = await Post.findById(newPost._id).populate("user", "nickname").populate("tags", "nombre");
         res.status(201).json(post)
     }
