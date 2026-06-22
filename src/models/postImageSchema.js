@@ -1,13 +1,14 @@
-const postImageSchema = new Schema({
+const mongoose = require("mongoose")
+const postImageSchema = new mongoose.Schema({
   url: {
     type: String,
     required: [true, 'La URL de la imagen es obligatoria']
   },
   post: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Post',
     required: true,
   },
 });
-
-module.exports = mongoose.model('PostImage', postImageSchema);
+const PostImage = mongoose.model('PostImage', postImageSchema)
+module.exports = PostImage

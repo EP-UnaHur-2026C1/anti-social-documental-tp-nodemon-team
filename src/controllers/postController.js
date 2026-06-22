@@ -1,8 +1,9 @@
 const Post = require('../models/postSchema');
+const PostImage = require("../models/postImageSchema")
 
 const getPost = async (req, res) => {
     try{
-        const posts = await Post.find()
+        const posts = await Post.find().populate("user", "nickname").populate("tags", "nombre")
         res.status(200).json(posts)
     }
     catch(error){
@@ -13,7 +14,11 @@ const getPost = async (req, res) => {
 const getPostById = async (req, res) => {
     try{
         const id = req.params.id
-        const post = await Post.findById(id)
+        const post = await Post.findById(id).populate("user", "nickname").populate("tags", "nombre")
+        const images = await PostImage.find({ post: post._id })
+        const commments = await Comment.find({
+            post: post._id,
+            }).populate("user", "nickName")
         res.status(200).json(post)
     }
     catch(error){
