@@ -88,4 +88,28 @@ const deletePost = async (req, res) =>{
     }
 }
 
-module.exports = {getPost, getPostById, createPost, updatePost, deletePost}
+const addImageToPost = async (req, res) => {
+  try {
+    const {url} = req.body
+    const post = await Post.findById(req.params.id)
+    const image = await PostImage.create({ url, post: post._id })
+    res.status(201).json(image)
+  } catch (e) {
+    console.error("Error al agregar imagen", e)
+    res.status(500).json({ message: "Error al agregar la imagen" })
+  }
+}
+
+const removeImageFromPost = async (req, res) => {
+  try {
+    const {id,imageId } = req.params;
+    const image = await PostImage.findOne({ _id: imageId, post: id });
+    await PostImage.findByIdAndDelete(imageId);
+    res.status(200).json({ message: "Imagen eliminada correctamente" });
+  } catch (e) {
+    console.error("Error al eliminar imagen", e);
+    res.status(500).json({ message: "Error al eliminar la imagen" });
+  }
+}
+
+module.exports = {getPost, getPostById, createPost, updatePost, deletePost,addImageToPost,removeImageFromPost}
