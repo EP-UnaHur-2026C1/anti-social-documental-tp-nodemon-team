@@ -1,0 +1,135 @@
+openapi: 3.0.1
+info: 
+    title: Unahur antisocial API
+    version: 1.0.0
+    description: API backend de la red social anti-social
+servers:
+  - url: http://localhost:3000
+tags:
+  - name: post
+    description: Este endpoint maneja toda la información relacionada con los Posts.
+  
+  - name: user
+    description: Este endpoint maneja toda la información relacionada con los usuarios
+  
+  - name: comment
+    description: Este endpoint maneja toda la información relacionada con los comentarios
+  
+  - name: tag
+    description: Este endpoint maneja toda la información relacionada con los tags
+paths:
+  /post:
+    get:
+      tags:
+      - post 
+      summary: Obtiene a todos los usuarios
+      response:
+        '200':
+          description: Devuelve todos los usuarios
+    post:
+      tags:
+      - post
+      summary: Crea nuevas publicaciones
+      requestBody: 
+        content: 
+          application/json: 
+            schema:
+              $ref: '#/components/schemas/BodyPostPublicacion'
+      responses:
+        '201':
+            description: Publicación creada
+
+  /post/{id}:
+
+    get:
+      tags:
+      - post
+      summary: Busca un post por un ID especifico.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+           
+    put:
+      tags:
+      - post
+      summary: Actualiza la información de una publicación
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyPostPublicacion'
+      responses:
+        '200':
+          description: Publicación actualizada con éxito
+    
+    delete:
+      tags:
+      - post
+      summary: Elimina un post mediante un ID especifico.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+  
+  /user:
+    get:
+      tags:
+      - user
+      summary: Obtiene todos los usuarios
+      response:
+        '200':
+          description: Usuarios obtenidos
+      
+    post:
+      tags:
+      - user
+      summary: Crea nuevos usuarios
+      requestBody: 
+        content: 
+          application/json: 
+            schema:
+              $ref: '#/components/schemas/BodyUserSchema'
+      responses:
+        '201':
+            description: Publicación creada
+
+      
+        
+
+components:
+  responses:
+  
+  parameters:
+  
+  schemas:
+     BodyPostPublicacion:
+        type: object
+        properties: 
+          nickname:
+            type:
+              string
+            description: nickname del usuario que va a crear una publicación
+          contenido:
+            type:
+              string
+            description: Contenido que va a tener la publicación
+          tags:
+            type:
+              string
+            description: El id del tag que va a estar asociado a la publicación.
+
+     BodyUserSchema:
+        type: object
+        properties:
+           
