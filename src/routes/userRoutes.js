@@ -15,6 +15,6 @@ router.get("/:nickname", validarUserByNickname, getUserByNickname)
 router.get('/id/:id', validarUserById, getUserById)
 router.post('/', createUser)
 router.put('/:nickname', validarUserByNickname, updateUser)
-router.delete('/:nickname', validarUserByNickname, deleteUser)
+router.delete('/id/:id', validarUserById, deleteUser)
 
 module.exports = router
