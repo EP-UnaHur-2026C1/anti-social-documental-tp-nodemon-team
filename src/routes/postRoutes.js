@@ -21,7 +21,7 @@ router.get("/:id/comments", validarPostById, getCommentsByPost)
 //router.get("/:id", validarPostById, getCommentsByPost)// CREO QUE ESTA DE MAS
 
 router.post('/', createPost)
-router.post("/:id/comments",validarCommentById, createComment)
+router.post("/:id/comments", validarPostById, createComment)
 router.post("/:id/images",validarPostById, addImageToPost)
 
 router.put('/:id', validarPostById, updatePost)
@@ -30,4 +30,3 @@ router.delete('/:id', validarPostById, deletePost)
 router.delete("/:id/images/:imageId",validarPostById,validarPostImageById,removeImageFromPost)
 
 module.exports = router;
-    

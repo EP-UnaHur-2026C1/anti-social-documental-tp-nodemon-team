@@ -37,15 +37,20 @@ const getCommentsByPost = async(req,res)=>{
         res.status(500).json(e.message)
     }
 }
-const createComment = async(req, res) =>{
-    try{
-        const comment = await Comment.create(req.body)
-        res.status(201).json(comment)
-    } catch(e){
-        console.error(e)
-        res.status(500).json(e.message)
+const createComment = async (req, res) => {
+    try {
+        const postId = req.params.id;
+
+        const comment = await Comment.create({
+            ...req.body,
+            post: postId
+        });
+
+        res.status(201).json(comment);
+    } catch (e) {
+        console.error(e);
+        res.status(500).json(e.message);
     }
-    
 }
 const updateComment = async(req,res)=>{
     try{
