@@ -54,7 +54,7 @@ const createComment = async (req, res) => {
 }
 const updateComment = async(req,res)=>{
     try{
-         const comment = await Commment.findByIdAndUpdate(
+         const comment = await Comment.findByIdAndUpdate(
             req.params.id,
             req.body,
             {new: true}
