@@ -35,7 +35,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:3000/user/id/ID_EJEMPLO_USUARIO",
+              "raw": "http://localhost:3000/user/id/ID_USUARIO_EJEMPLO",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -44,7 +44,7 @@
               "path": [
                 "user",
                 "id",
-                "ID_EJEMPLO_USUARIO"
+                "ID_USUARIO_EJEMPLO"
               ]
             }
           },
@@ -85,7 +85,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"nickname\": \"Prof_Gerardo\"\r\n}",
+              "raw": "{\r\n  \"nickname\": \"Ejemplo\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -93,7 +93,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/user/id/6a3ea5801b336ca3e2b36bb8",
+              "raw": "http://localhost:3000/user/id/ID_USUARIO_EJEMPLO",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -102,7 +102,7 @@
               "path": [
                 "user",
                 "id",
-                "6a3ea5801b336ca3e2b36bb8"
+                "ID_USUARIO_EJEMPLO"
               ]
             }
           },
@@ -114,7 +114,7 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:3000/user/id/6a3ea5521b336ca3e2b36bb7",
+              "raw": "http://localhost:3000/user/id/ID_USUARIO_EJEMPLO",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -123,7 +123,7 @@
               "path": [
                 "user",
                 "id",
-                "6a3ea5521b336ca3e2b36bb7"
+                "ID_USUARIO_EJEMPLO"
               ]
             }
           },
@@ -159,7 +159,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:3000/post/6a3ecdf6f427516cabab9f6b",
+              "raw": "http://localhost:3000/post/ID_POST_EJEMPLO",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -167,7 +167,7 @@
               "port": "3000",
               "path": [
                 "post",
-                "6a3ecdf6f427516cabab9f6b"
+                "ID_POST_EJEMPLO"
               ]
             }
           },
@@ -216,7 +216,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/post/6a3ece3af427516cabab9f6c",
+              "raw": "http://localhost:3000/post/ID_POST_EJEMPLO",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -224,7 +224,7 @@
               "port": "3000",
               "path": [
                 "post",
-                "6a3ece3af427516cabab9f6c"
+                "ID_POST_EJEMPLO"
               ]
             }
           },
@@ -236,7 +236,7 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:3000/post/6a3ecdf6f427516cabab9f6b",
+              "raw": "http://localhost:3000/post/ID_POST_EJEMPLO",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -244,7 +244,7 @@
               "port": "3000",
               "path": [
                 "post",
-                "6a3ecdf6f427516cabab9f6b"
+                "ID_POST_EJEMPLO"
               ]
             }
           },
@@ -262,7 +262,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"contenido\": \"EJEMPLO\",\r\n  \"user\": \"6a3c573128377ae9a057af9c\"\r\n}",
+              "raw": "{\r\n  \"contenido\": \"EJEMPLO\",\r\n  \"user\": \"ID_USER_EJEMPLO\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -270,7 +270,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/post/6a3ee5caf427516cabab9f71/comments",
+              "raw": "http://localhost:3000/post/ID_POST_EJEMPLO/comments",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -278,7 +278,7 @@
               "port": "3000",
               "path": [
                 "post",
-                "6a3ee5caf427516cabab9f71",
+                "ID_POST_EJEMPLO",
                 "comments"
               ]
             }
@@ -319,7 +319,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/comment/6a3ea70e1b336ca3e2b36bba",
+              "raw": "http://localhost:3000/comment/ID_COMENTARIO_EJEMPLO",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -327,7 +327,7 @@
               "port": "3000",
               "path": [
                 "comment",
-                "6a3ea70e1b336ca3e2b36bba"
+                "ID_COMENTARIO_EJEMPLO"
               ]
             }
           },
@@ -339,7 +339,7 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:3000/comment/6a3ecef7f427516cabab9f6e",
+              "raw": "http://localhost:3000/comment/ID_COMENTARIO_EJEMPLO",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -347,7 +347,7 @@
               "port": "3000",
               "path": [
                 "comment",
-                "6a3ecef7f427516cabab9f6e"
+                "ID_COMENTARIO_EJEMPLO"
               ]
             }
           },
@@ -373,7 +373,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/post/6a3ea5fe1b336ca3e2b36bb9/images",
+              "raw": "http://localhost:3000/post/ID_POST_EJEMPLO/images",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -381,7 +381,7 @@
               "port": "3000",
               "path": [
                 "post",
-                "6a3ea5fe1b336ca3e2b36bb9",
+                "ID_POST_EJEMPLO",
                 "images"
               ]
             }
@@ -394,7 +394,7 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:3000/post/ID_DEL_POST/images/ID_DE_LA_IMAGEN",
+              "raw": "http://localhost:3000/post/ID_POST_EJEMPLO/images/ID_IMAGEN_EJEMPLO",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -402,9 +402,9 @@
               "port": "3000",
               "path": [
                 "post",
-                "ID_DEL_POST",
+                "ID_POST_EJEMPLO",
                 "images",
-                "ID_DE_LA_IMAGEN"
+                "ID_IMAGEN_EJEMPLO"
               ]
             }
           },
@@ -477,7 +477,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/tag/6a3ecdf62e32c4e939acaf76",
+              "raw": "http://localhost:3000/tag/ID_TAG_EJEMPLO",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -485,7 +485,7 @@
               "port": "3000",
               "path": [
                 "tag",
-                "6a3ecdf62e32c4e939acaf76"
+                "ID_TAG_EJEMPLO"
               ]
             }
           },
@@ -497,7 +497,7 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:3000/tag/6a3eac8d2e32c4e939acaf73",
+              "raw": "http://localhost:3000/tag/ID_TAG_EJEMPLO",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -505,7 +505,7 @@
               "port": "3000",
               "path": [
                 "tag",
-                "6a3eac8d2e32c4e939acaf73"
+                "ID_TAG_EJEMPLO"
               ]
             }
           },
