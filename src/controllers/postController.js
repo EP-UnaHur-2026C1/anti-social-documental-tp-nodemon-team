@@ -63,14 +63,24 @@ const createPost = async (req, res) => {
     }
 }
 
-const updatePost = async (req, res) =>{
-    try{
-        const id = req.params.id
-        const post = await Post.findByIdAndUpdate(id, req.body, {new: true})
-        res.status(200).json({message: "Post actualizado"})
+const updatePost = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const datos = { ...req.body };
+        if (req.body.tags) {
+            datos.tags = await resolverTagIds(req.body.tags);
+        }
+        const post = await Post.findByIdAndUpdate(
+            id,
+            datos,
+            { new: true }
+        ).populate("user", "nickname")
+         .populate("tags", "nombre");
+
+        res.status(200).json(post);
     }
-    catch(error){
-        res.status(500).json(error.message)
+    catch (error) {
+        res.status(500).json(error.message);
     }
 }
 
