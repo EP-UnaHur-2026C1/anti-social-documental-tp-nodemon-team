@@ -22,10 +22,12 @@ paths:
     get:
       tags:
       - post 
-      summary: Obtiene a todos los usuarios
-      response:
+      summary: Obtiene a todos los posts
+      responses:
         '200':
-          description: Devuelve todos los usuarios
+          description: Devuelve todos los posts
+        '404':
+          description: Posts no encontrados
     post:
       tags:
       - post
@@ -87,7 +89,7 @@ paths:
       tags:
       - user
       summary: Obtiene todos los usuarios
-      response:
+      responses:
         '200':
           description: Usuarios obtenidos
       
