@@ -102,8 +102,208 @@ paths:
               $ref: '#/components/schemas/BodyUserSchema'
       responses:
         '201':
-            description: Publicación creada
+            description: Usuario creado
 
+  /user/{id}:
+
+    get:
+      tags:
+      - user
+      summary: Busca un usuario por un ID especifico.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+           
+    put:
+      tags:
+      - user
+      summary: Actualiza la información de un usuario
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyUserSchema'
+      responses:
+        '200':
+          description: Usuario actualizado con éxito
+
+    delete:
+      tags:
+      - user
+      summary: Elimina un usuario mediante su ID.
+      parameters:
+        - name: ID
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Usuario eliminado
+    
+    
+  
+  /user/{nickname}:
+    get:
+      tags:
+      - user
+      summary: Busca un usuario por nickname.
+      parameters:
+        - name: nickname
+          in: path
+          required: true
+          schema:
+            type: string
+    
+
+  /comment:
+    get:
+      tags:
+      - comment
+      summary: Obtiene todos los comentarios
+      response:
+        '200':
+          description: Comentarios obtenidos
+
+    post:
+      tags:
+      - comment
+      summary: Crea nuevos comentarios
+      requestBody: 
+        content: 
+          application/json: 
+            schema:
+              $ref: '#/components/schemas/CommentSchema'
+      responses:
+        '201':
+            description: Comentario creado
+          
+  /comment/{id}:
+    get:
+      tags:
+      - comment
+      summary: Busca un comentario por un ID especifico.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: comentario encontrado
+           
+    put:
+      tags:
+      - comment
+      summary: Actualiza la información de un comentario
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentSchema'
+      responses:
+        '200':
+          description: Usuario actualizado con éxito
+
+    delete:
+      tags:
+      - comment
+      summary: Elimina un comentario mediante su ID.
+      parameters:
+        - name: ID
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: comentario eliminado
+    
+  /tag:
+    get:
+      tags:
+      - tag
+      summary: Obtiene todos los tags
+      response:
+        '200':
+          description: tags obtenidos
+
+    post:
+      tags:
+      - tag
+      summary: Crea nuevos tags
+      requestBody: 
+        content: 
+          application/json: 
+            schema:
+              $ref: '#/components/schemas/TagSchema'
+      responses:
+        '201':
+            description: tag creado
+          
+  /tag/{id}:
+    get:
+      tags:
+      - tag
+      summary: Busca un tag por un ID especifico.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: tag encontrado
+           
+    put:
+      tags:
+      - tag
+      summary: Actualiza la información de un tag
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagSchema'
+      responses:
+        '200':
+          description: Tag actualizado con éxito
+
+    delete:
+      tags:
+      - tag
+      summary: Elimina un tag mediante su ID.
+      parameters:
+        - name: ID
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: tag eliminado
       
         
 
@@ -132,4 +332,29 @@ components:
      BodyUserSchema:
         type: object
         properties:
+          nickname:
+            type: string
+            description: El nickname del Usuario
+          followers:
+            type: string
+            description: Los seguidores del usuario
+     CommentSchema:
+      type: object
+      properties:
+        contenido:
+          type: string
+          description: El contenido del comentario
+        user:
+          type: string
+          description: El id del usuario que realizó el comentario
+        post:
+          type: string
+          description: El id del post al que pertenece el comentario
+
+     TagSchema:
+      type: object
+      properties:
+        nombre:
+          type: string
+          description: El nombre que va a tener el tag  
            
